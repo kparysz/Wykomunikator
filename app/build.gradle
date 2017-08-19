@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    signingConfigs {
+        release
+    }
+    compileSdkVersion 25
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "pl.kparysz.wykomessages"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        automated {
+            applicationIdSuffix ".automated"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+
+        test {
+            resources.srcDirs += ['src/test/resources']
+        }
+        automated {
+            res.srcDirs = ['src/androidTest/res', 'src/automated/res']
+            java.srcDirs += 'src/automated/kotlin'
+        }
+    }
+    testBuildType "automated"
+
+}
+
+Properties props = new Properties()
+def propFile = new File('./key/jks.properties')
+if (propFile.canRead()){
+    props.load(new FileInputStream(propFile))
+
+    if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+    } else {
+        println 'jks.properties but some entries are missing'
+        android.buildTypes.release.signingConfig = null
+    }
+}else {
+    println 'jks.properties not found'
+    android.buildTypes.release.signingConfig = null
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:$support_library_version"
+    compile "com.android.support:support-v4:$support_library_version"
+    compile "com.android.support:cardview-v7:$support_library_version"
+    compile "com.android.support:recyclerview-v7:$support_library_version"
+    compile "com.android.support:gridlayout-v7:$support_library_version"
+    compile "com.android.support:design:$support_library_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    compile "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    compile "com.github.bumptech.glide:glide:$glide_version"
+    compile "com.squareup.okhttp3:logging-interceptor:$ok_http_version"
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    // Dagger
+    compile "com.google.dagger:dagger:$dagger_version"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    testCompile 'org.assertj:assertj-core:1.7.1'
+    testCompile 'com.nhaarman:mockito-kotlin:1.5.0'
+    testCompile('com.squareup.assertj:assertj-android:1.1.1') {
+        exclude group: 'com.android.support'
+    }
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:$mockito_version"
+    androidTestCompile "com.android.support:support-annotations:$support_library_version"
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2') {
+        // Necessary to avoid version conflicts
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.squareup.okhttp3:mockwebserver:3.8.0'
+    compile 'in.co.ophio:secure-preferences:0.1.3'
+    compile 'com.android.support:multidex:1.0.2'
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
