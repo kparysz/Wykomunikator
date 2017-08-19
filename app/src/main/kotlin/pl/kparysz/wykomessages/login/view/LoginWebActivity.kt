@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.webkit.*
-import kotlinx.android.synthetic.main.login_web_view.*
-import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.login.presenter.LoginPresenter
 import pl.kparysz.wykomessages.network.WykopConfig
@@ -16,7 +14,8 @@ import javax.inject.Inject
 class LoginWebActivity : AppCompatActivity(), LoginView {
 
     companion object {
-        @JvmStatic fun createIntent(context: Context) = Intent(context, LoginWebActivity::class.java)
+        @JvmStatic
+        fun createIntent(context: Context) = Intent(context, LoginWebActivity::class.java)
     }
 
     @Inject

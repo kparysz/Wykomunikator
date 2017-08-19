@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_chat.*
-import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.chat.adapter.MessageAdapter
 import pl.kparysz.wykomessages.chat.presenter.ChatPresenter
 import pl.kparysz.wykomessages.di.App
@@ -17,8 +15,9 @@ class ChatActivity : AppCompatActivity(), ChatView {
 
     companion object {
         const val USER_NAME_BUNDLE_KEY = "pl.kparysz.wykomessages.chat.user.name"
-        @JvmStatic fun createIntent(context: Context?,
-                                    userName: String) = Intent(context, ChatActivity::class.java)
+        @JvmStatic
+        fun createIntent(context: Context?,
+                         userName: String) = Intent(context, ChatActivity::class.java)
                 .apply { putExtra(USER_NAME_BUNDLE_KEY, userName) }
     }
 

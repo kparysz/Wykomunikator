@@ -22,7 +22,7 @@ class RepositoryModule {
                                wykopPreferencesApi: WykopPreferencesApi,
                                secretInfoApi: SecretInfoApi,
                                client: WykopHttpClient): UserLoginApi {
-        return UserRepository(retrofit, wykopPreferencesApi, secretInfoApi,client)
+        return UserRepository(retrofit, wykopPreferencesApi, secretInfoApi, client)
     }
 
     @Provides
@@ -31,15 +31,15 @@ class RepositoryModule {
                                            wykopPreferencesApi: WykopPreferencesApi,
                                            secretInfoApi: SecretInfoApi,
                                            client: WykopHttpClient): ConversationListApi {
-        return ConversationListRepository(retrofit, wykopPreferencesApi,secretInfoApi, client)
+        return ConversationListRepository(retrofit, wykopPreferencesApi, secretInfoApi, client)
     }
 
     @Provides
     @Singleton
     fun providesChatDetailRepository(retrofit: Retrofit.Builder,
-                                           wykopPreferencesApi: WykopPreferencesApi,
+                                     wykopPreferencesApi: WykopPreferencesApi,
                                      secretInfoApi: SecretInfoApi,
                                      client: WykopHttpClient): ChatDetailApi {
-        return ChatDetailRepository(retrofit, wykopPreferencesApi,secretInfoApi, client)
+        return ChatDetailRepository(retrofit, wykopPreferencesApi, secretInfoApi, client)
     }
 }

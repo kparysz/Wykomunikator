@@ -21,7 +21,7 @@ public class MessagesActivityTest extends AutomatedTestActivity {
 
     @Rule
     public ActivityTestRule<MessagesActivity> activity =
-        new ActivityTestRule<>(MessagesActivity.class, true, false);
+            new ActivityTestRule<>(MessagesActivity.class, true, false);
 
     @Before
     public void setUp() throws Exception {

@@ -4,6 +4,5 @@
     <application
         android:allowBackup="false"
         android:name="wykomessages.di.AutomatedApp"
-        tools:replace="android:name">
-    </application>
+        tools:replace="android:name"></application>
 </manifest>

@@ -2,14 +2,11 @@ package pl.kparysz.wykomessages.chat.adapter
 
 import android.support.v4.widget.Space
 import android.support.v7.widget.RecyclerView
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
-import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.models.dataclass.PrivateMessageDetail
 
 class MessageAdapter : RecyclerView.Adapter<MessageAdapter.ViewHolder>() {

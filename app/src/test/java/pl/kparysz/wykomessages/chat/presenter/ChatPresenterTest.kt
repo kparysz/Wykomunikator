@@ -12,7 +12,7 @@ import pl.kparysz.wykomessages.chat.repository.ChatDetailApi
 import pl.kparysz.wykomessages.chat.view.ChatView
 import pl.kparysz.wykomessages.models.dataclass.PrivateMessageDetail
 
-class ChatPresenterTest{
+class ChatPresenterTest {
 
     lateinit var systemUnderTest: ChatPresenter
     var subscriptionManagerTest = SubscriptionManagerTest()

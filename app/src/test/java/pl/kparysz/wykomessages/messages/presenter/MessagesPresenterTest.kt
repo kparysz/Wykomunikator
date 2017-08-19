@@ -14,7 +14,7 @@ import pl.kparysz.wykomessages.messages.view.MessagesView
 import pl.kparysz.wykomessages.models.dataclass.ConversationDetail
 import unofficial.coderoid.wykop.newapp.utils.NavigatorApi
 
-class MessagesPresenterTest{
+class MessagesPresenterTest {
 
     lateinit var systemUnderTest: MessagesPresenter
     var subscriptionManagerTest = SubscriptionManagerTest()
@@ -23,9 +23,9 @@ class MessagesPresenterTest{
     var mockOfContext = mock<Context>()
     var mockOfConversationListApi = mock<ConversationListApi>()
 
-        @Before
-        fun setUp() {
-            systemUnderTest = MessagesPresenter(subscriptionManagerTest, mockOfNavigation, mockOfConversationListApi)
+    @Before
+    fun setUp() {
+        systemUnderTest = MessagesPresenter(subscriptionManagerTest, mockOfNavigation, mockOfConversationListApi)
     }
 
     @Test
@@ -59,11 +59,13 @@ class MessagesPresenterTest{
         verify(mockOfNavigation).openChatActivity(mockOfContext, "authorName")
     }
 
-    private fun mockConversationList() = (0..4).map { it -> ConversationDetail(
-            "authorName",
-            "avatarUrl",
-            "lastUpdate",
-            "status",
-            0,
-            "authorSex") }
+    private fun mockConversationList() = (0..4).map { it ->
+        ConversationDetail(
+                "authorName",
+                "avatarUrl",
+                "lastUpdate",
+                "status",
+                0,
+                "authorSex")
+    }
 }

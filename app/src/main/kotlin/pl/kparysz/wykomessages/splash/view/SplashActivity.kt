@@ -3,8 +3,6 @@ package pl.kparysz.wykomessages.splash.view
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import kotlinx.android.synthetic.main.activity_splash.*
-import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.splash.presenter.SplashPresenter
 import unofficial.coderoid.wykop.newapp.utils.NavigatorApi

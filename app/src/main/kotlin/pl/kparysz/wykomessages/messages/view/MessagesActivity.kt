@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_messages.*
-import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.messages.adapters.ConversationsAdapter
 import pl.kparysz.wykomessages.messages.presenter.MessagesPresenter
@@ -15,7 +13,8 @@ import javax.inject.Inject
 
 class MessagesActivity : AppCompatActivity(), MessagesView {
     companion object {
-        @JvmStatic fun createIntent(context: Context) = Intent(context, MessagesActivity::class.java)
+        @JvmStatic
+        fun createIntent(context: Context) = Intent(context, MessagesActivity::class.java)
     }
 
     @Inject

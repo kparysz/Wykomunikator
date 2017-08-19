@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.conversation_view.view.*
-import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.models.dataclass.ConversationDetail
 
 class ConversationsAdapter(val context: Context) : RecyclerView.Adapter<ConversationsAdapter.MessagesViewHolder>() {

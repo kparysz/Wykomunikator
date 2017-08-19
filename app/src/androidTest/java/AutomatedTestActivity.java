@@ -13,7 +13,7 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
 
-public class AutomatedTestActivity  extends InstrumentationTestCase {
+public class AutomatedTestActivity extends InstrumentationTestCase {
 
     private MockWebServer server;
 
@@ -35,7 +35,7 @@ public class AutomatedTestActivity  extends InstrumentationTestCase {
         @Override
         public MockResponse dispatch(RecordedRequest request) throws InterruptedException {
 
-            if (request.getPath().equals("/pm/conversationslist/appkey,FAKE_APP_KEY/userkey,")){
+            if (request.getPath().equals("/pm/conversationslist/appkey,FAKE_APP_KEY/userkey,")) {
                 return new MockResponse().setResponseCode(200).setBody(getBody("messages.json"));
             }
             return new MockResponse().setResponseCode(404);
