@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2E6E99</color>
+    <color name="colorPrimaryDark">#2E6E99</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="background">#151515</color>
+    <color name="title_color">#F5F5F5</color>
+    <color name="description_color">#95A5A6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="desc_color">#BABABA</color>
+    <color name="author_color_man">#FE6114</color>
+    <color name="author_color_woman">#FE6114</color>
+    <color name="action_background">#34495E</color>
+    <color name="author_background">#151F28</color>
+    <color name="author_color_">#858585</color>
+    <color name="details_color">#BABABA</color>
+    <color name="indicator_color">#FC5817</color>
+    <color name="main_tab_selected">#4383AF</color>
+    <color name="main_tab_unselected">#2E6E99</color>
+    <color name="bookmark_tabs_background">#4383AF</color>
+    <color name="green_user">#339933</color>
+    <color name="orange_user">#FF5917</color>
+    <color name="red_user">#BB0000</color>
+</resources>
