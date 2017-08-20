@@ -21,4 +21,11 @@ class ChatPresenter(val subscriptionManager: SubscriptionApi,
         subscriptionManager.dispose(this)
     }
 
+    fun sendMessage(userName: String, messageBody: String) {
+        subscriptionManager.subscribe(chatDetailApi.sendMessage(userName, messageBody),
+                Consumer { baseView?.messageSent() },
+                Consumer { baseView?.showMessageSendError() },
+                this)
+    }
+
 }

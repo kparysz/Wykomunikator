@@ -11,6 +11,7 @@ import pl.kparysz.wykomessages.di.modules.RepositoryModule
 open class App : Application() {
 
     companion object {
+        const val WYKOP_API_URL = "http://a.wykop.pl"
         @JvmStatic lateinit var uiInject: Injector
     }
 
@@ -19,7 +20,7 @@ open class App : Application() {
         uiInject = DaggerInjector
                 .builder()
                 .presentersModule(PresentersModule())
-                .networkModule(NetworkModule("http://a.wykop.pl"))
+                .networkModule(NetworkModule(WYKOP_API_URL))
                 .repositoryModule(RepositoryModule())
                 .appModule(AppModule(this))
                 .build()
@@ -32,8 +33,7 @@ open class App : Application() {
         multiDexInstall()
     }
 
-    fun multiDexInstall() {
+    private fun multiDexInstall() {
         MultiDex.install(this)
     }
 }
-

@@ -2,6 +2,8 @@ package pl.kparysz.wykomessages.chat.repository
 
 import io.reactivex.Observable
 import pl.kparysz.wykomessages.models.pojo.PrivateMessage
+import pl.kparysz.wykomessages.models.pojo.SimpleBody
+import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -10,4 +12,9 @@ interface ChatDetailRetrofit {
     fun getChatDetail(@Path("username") userName: String,
                       @Path("appkey") appKey: String,
                       @Path("userkey") userKey: String): Observable<List<PrivateMessage>>
+
+    @POST("/pm/sendmessage/{recipient}/appkey,{appkey}/userkey,{userkey}")
+    fun sendMessage(@Path("recipient") recipientName: String,
+                    @Path("appkey") appKey: String,
+                    @Path("userkey") userKey: String): Observable<Any>
 }

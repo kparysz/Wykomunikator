@@ -3,8 +3,12 @@ package pl.kparysz.wykomessages.messages.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_messages.*
+import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.messages.adapters.ConversationsAdapter
 import pl.kparysz.wykomessages.messages.presenter.MessagesPresenter
@@ -21,7 +25,7 @@ class MessagesActivity : AppCompatActivity(), MessagesView {
     lateinit var presenter: MessagesPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as App).getInjector()?.inject(this)
+        (application as App).getInjector().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_messages)
         presenter.setView(this)
@@ -37,6 +41,9 @@ class MessagesActivity : AppCompatActivity(), MessagesView {
     }
 
     override fun showError() {
-
+        Snackbar.make(messages_list, getString(R.string.get_messages_failed), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.snackbar_retry), {})
+                .setActionTextColor(ContextCompat.getColor(this, android.R.color.holo_red_light))
+                .show()
     }
 }

@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.webkit.*
+import kotlinx.android.synthetic.main.login_web_view.*
+import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.login.presenter.LoginPresenter
 import pl.kparysz.wykomessages.network.WykopConfig
@@ -24,7 +26,7 @@ class LoginWebActivity : AppCompatActivity(), LoginView {
     lateinit var navigator: NavigatorApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as App).getInjector()?.inject(this)
+        (application as App).getInjector().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_web_view)
         webView.loadUrl(WykopConfig.REGISTER_APP_LINK + WykopConfig.API_APP_KEY + "/")

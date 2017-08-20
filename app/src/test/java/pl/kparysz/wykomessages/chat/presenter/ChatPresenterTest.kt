@@ -34,6 +34,24 @@ class ChatPresenterTest {
         verify(mockOfView).showChat(expectedList)
     }
 
+    @Test
+    fun shouldSendMessage() {
+        whenever(mockOfChatApi.sendMessage("userName", "messageBody"))
+                .thenReturn(Observable.just(Any()))
+        systemUnderTest.sendMessage("userName", "messageBody")
+
+        verify(mockOfView).messageSent()
+    }
+
+    @Test
+    fun shouldShowErrorWhenMessageDidNotSend() {
+        whenever(mockOfChatApi.sendMessage("userName", "messageBody"))
+                .thenReturn(Observable.error(Throwable()))
+        systemUnderTest.sendMessage("userName", "messageBody")
+
+        verify(mockOfView).showMessageSendError()
+    }
+
     private fun mockOfPrivateMessageDetail() = (0..5)
             .map { it -> PrivateMessageDetail("body", "author", "date", it % 2 == 0) }
 }

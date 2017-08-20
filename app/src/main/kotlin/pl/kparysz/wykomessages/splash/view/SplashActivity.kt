@@ -3,6 +3,8 @@ package pl.kparysz.wykomessages.splash.view
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import kotlinx.android.synthetic.main.activity_splash.*
+import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.splash.presenter.SplashPresenter
 import unofficial.coderoid.wykop.newapp.utils.NavigatorApi
@@ -16,7 +18,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
     lateinit var navigator: NavigatorApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as App).getInjector()?.inject(this)
+        (application as App).getInjector().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         presenter.setView(this)

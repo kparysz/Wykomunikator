@@ -3,13 +3,18 @@ package pl.kparysz.wykomessages.chat.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_chat.*
+import pl.kparysz.wykomessages.R
 import pl.kparysz.wykomessages.chat.adapter.MessageAdapter
 import pl.kparysz.wykomessages.chat.presenter.ChatPresenter
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.models.dataclass.PrivateMessageDetail
 import javax.inject.Inject
+
 
 class ChatActivity : AppCompatActivity(), ChatView {
 
@@ -25,12 +30,13 @@ class ChatActivity : AppCompatActivity(), ChatView {
     lateinit var presenter: ChatPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as App).getInjector()?.inject(this)
+        (application as App).getInjector().inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         presenter.setView(this)
         val userName = intent.getStringExtra(USER_NAME_BUNDLE_KEY)
         presenter.downloadChat(userName)
+        send.setOnClickListener{ presenter.sendMessage(userName, message_body.text.toString()) }
     }
 
     override fun showChat(messages: List<PrivateMessageDetail>) {
@@ -38,10 +44,27 @@ class ChatActivity : AppCompatActivity(), ChatView {
         chat_list.adapter = adapter
         chat_list.layoutManager = LinearLayoutManager(this)
         adapter.messageList += messages
+        chat_list.scrollToPosition(messages.size - 1)
+    }
+
+    override fun messageSent() {
+        message_body.setText("")
+        val userName = intent.getStringExtra(USER_NAME_BUNDLE_KEY)
+        presenter.downloadChat(userName)
+    }
+
+    override fun showMessageSendError() {
+        Snackbar.make(chat_list, getString(R.string.send_message_failed), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.snackbar_retry), {})
+                .setActionTextColor(ContextCompat.getColor(this, android.R.color.holo_red_light))
+                .show()
     }
 
     override fun showError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Snackbar.make(chat_list, getString(R.string.get_conversations_failed), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.snackbar_retry), {})
+                .setActionTextColor(ContextCompat.getColor(this, android.R.color.holo_red_light))
+                .show()
     }
 
 }

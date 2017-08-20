@@ -26,7 +26,6 @@ object RequestFactory {
         } catch (e: UnsupportedEncodingException) {
             e.printStackTrace()
         }
-
         return hashedPassword
     }
 }

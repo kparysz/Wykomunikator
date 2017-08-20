@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Wykomunikator</string>
+    <string name="snackbar_retry">Ponów</string>
+    <string name="login_failed">Nie udało się zalogowac</string>
+    <string name="get_messages_failed">Nie można pobrac wiadomosco</string>
+    <string name="get_conversations_failed">Nie można pobrac konwersacji</string>
+    <string name="send_message_failed">Nie udało się wysłac wiadomosci</string>
 </resources>
