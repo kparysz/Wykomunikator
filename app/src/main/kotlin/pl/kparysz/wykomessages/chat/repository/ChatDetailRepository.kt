@@ -4,7 +4,6 @@ import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import pl.kparysz.wykomessages.models.dataclass.PrivateMessageDetail
 import pl.kparysz.wykomessages.models.pojo.PrivateMessage
-import pl.kparysz.wykomessages.models.pojo.SimpleBody
 import pl.kparysz.wykomessages.network.WykopHttpClient
 import pl.kparysz.wykomessages.prefs.WykopPreferencesApi
 import pl.kparysz.wykomessages.utils.SecretInfoApi
@@ -28,6 +27,7 @@ class ChatDetailRepository(val retrofit: Retrofit.Builder,
     private fun convertToPrivateMessageDetail(privateMessage: PrivateMessage) = PrivateMessageDetail(
             privateMessage.body.orEmpty(),
             privateMessage.author.orEmpty(),
+            privateMessage.authorAvatar.orEmpty(),
             privateMessage.lastUpdate.orEmpty(),
             privateMessage.direction.orEmpty() == "sended")
 

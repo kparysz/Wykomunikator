@@ -11,8 +11,14 @@ class ChatPresenter(val subscriptionManager: SubscriptionApi,
 
     fun downloadChat(userName: String) {
         subscriptionManager.subscribe(chatDetailApi.getChatDetail(userName),
-                Consumer { baseView?.showChat(it) },
-                Consumer { baseView?.showError() },
+                Consumer {
+                    baseView?.showChat(it)
+                    baseView?.hideProgress()
+                },
+                Consumer {
+                    baseView?.showError()
+                    baseView?.hideProgress()
+                },
                 this)
     }
 

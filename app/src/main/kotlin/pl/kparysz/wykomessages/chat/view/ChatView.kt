@@ -7,4 +7,6 @@ interface ChatView {
     fun messageSent()
     fun showMessageSendError()
     fun showError()
+    fun showProgress()
+    fun hideProgress()
 }

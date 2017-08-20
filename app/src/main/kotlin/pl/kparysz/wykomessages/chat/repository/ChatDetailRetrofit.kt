@@ -2,8 +2,6 @@ package pl.kparysz.wykomessages.chat.repository
 
 import io.reactivex.Observable
 import pl.kparysz.wykomessages.models.pojo.PrivateMessage
-import pl.kparysz.wykomessages.models.pojo.SimpleBody
-import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Path
 

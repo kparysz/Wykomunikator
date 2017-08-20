@@ -2,22 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/bookmark_tabs_background"
     android:layout_height="match_parent"
+    android:background="@color/bookmark_tabs_background"
     tools:context=".chat.view.ChatActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/chat_list"
-        android:layout_above="@+id/send_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/send_parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/author_color_man" />
 
     <LinearLayout
         android:id="@+id/send_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
         android:weightSum="3">
 
         <EditText
@@ -31,8 +39,8 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Wyślij"
-            android:filterTouchesWhenObscured="true" />
+            android:filterTouchesWhenObscured="true"
+            android:text="Wyślij" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -7,9 +7,10 @@ import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import kotlinx.android.synthetic.main.activity_chat.*
 import pl.kparysz.wykomessages.R
-import pl.kparysz.wykomessages.chat.adapter.MessageAdapter
+import pl.kparysz.wykomessages.chat.adapter.ChatAdapter
 import pl.kparysz.wykomessages.chat.presenter.ChatPresenter
 import pl.kparysz.wykomessages.di.App
 import pl.kparysz.wykomessages.models.dataclass.PrivateMessageDetail
@@ -36,15 +37,24 @@ class ChatActivity : AppCompatActivity(), ChatView {
         presenter.setView(this)
         val userName = intent.getStringExtra(USER_NAME_BUNDLE_KEY)
         presenter.downloadChat(userName)
-        send.setOnClickListener{ presenter.sendMessage(userName, message_body.text.toString()) }
+        showProgress()
+        send.setOnClickListener { presenter.sendMessage(userName, message_body.text.toString()) }
     }
 
     override fun showChat(messages: List<PrivateMessageDetail>) {
-        val adapter = MessageAdapter()
+        val adapter = ChatAdapter(this)
         chat_list.adapter = adapter
         chat_list.layoutManager = LinearLayoutManager(this)
         adapter.messageList += messages
         chat_list.scrollToPosition(messages.size - 1)
+    }
+
+    override fun showProgress() {
+        progress_bar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progress_bar.visibility = View.INVISIBLE
     }
 
     override fun messageSent() {

@@ -34,9 +34,11 @@ class SplashActivity : AppCompatActivity(), SplashView {
 
     override fun openLoginActivity() {
         navigator.openLoginWebActivity(this, 1212)
+        finish()
     }
 
     override fun openMessagesActivity() {
         navigator.openMessagesActivity(this)
+        finish()
     }
 }
