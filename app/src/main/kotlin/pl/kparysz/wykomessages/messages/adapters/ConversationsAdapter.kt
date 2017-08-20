@@ -38,29 +38,24 @@ class ConversationsAdapter(val context: Context) : RecyclerView.Adapter<Conversa
 
     private fun setMessageStatus(status: String, statusView: TextView) {
         if (status == "read") {
-            statusView.text = "Przeczytane"
+            statusView.text = context.getString(R.string.message_read_status)
         } else {
-            statusView.text = "Nowa"
+            statusView.text = context.getString(R.string.message_new_status)
         }
     }
 
-    private fun setAuthorColor(authorGroup: Int): Int {
-        if (authorGroup == 0) {
-            return ContextCompat.getColor(context, R.color.green_user)
-        } else if (authorGroup == 1) {
-            return ContextCompat.getColor(context, R.color.orange_user)
-        } else {
-            return ContextCompat.getColor(context, R.color.red_user)
-        }
-    }
+    private fun setAuthorColor(authorGroup: Int): Int =
+            when (authorGroup) {
+                0 -> ContextCompat.getColor(context, R.color.green_user)
+                1 -> ContextCompat.getColor(context, R.color.orange_user)
+                else -> ContextCompat.getColor(context, R.color.red_user)
+            }
 
     private fun setImageBorder(authorSex: String, imageView: CircleImageView) {
-        if (authorSex == "female") {
-            imageView.borderColor = ContextCompat.getColor(context, R.color.colorAccent)
-        } else if (authorSex == "male") {
-            imageView.borderColor = ContextCompat.getColor(context, R.color.main_tab_unselected)
-        } else {
-            return
+        when (authorSex) {
+            "female" -> imageView.borderColor = ContextCompat.getColor(context, R.color.colorAccent)
+            "male" -> imageView.borderColor = ContextCompat.getColor(context, R.color.main_tab_unselected)
+            else -> return
         }
     }
 

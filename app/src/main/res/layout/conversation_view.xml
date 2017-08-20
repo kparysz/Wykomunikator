@@ -8,8 +8,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/user_avatar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/circle_image_avatar_size"
+        android:layout_height="@dimen/circle_image_avatar_size"
         app:civ_border_width="1dp" />
 
     <pl.kparysz.wykomessages.ui.WykopFontTextView

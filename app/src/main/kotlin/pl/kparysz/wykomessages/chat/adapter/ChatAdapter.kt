@@ -70,7 +70,7 @@ class ChatAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.View
     private class ReceivedMessageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var messageText: TextView = itemView.findViewById(R.id.text_message_body) as TextView
         var timeText: TextView = itemView.findViewById(R.id.text_message_time) as TextView
-        var nameText: TextView = itemView.findViewById(R.id.text_message_name) as TextView
+        var nameText: TextView = itemView.findViewById(R.id.text_message_author) as TextView
         var profileImage: ImageView = itemView.findViewById(R.id.image_message_profile) as ImageView
 
         internal fun bind(context: Context, message: PrivateMessageDetail) {

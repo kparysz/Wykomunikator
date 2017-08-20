@@ -5,4 +5,7 @@
     <string name="get_messages_failed">Nie można pobrac wiadomosco</string>
     <string name="get_conversations_failed">Nie można pobrac konwersacji</string>
     <string name="send_message_failed">Nie udało się wysłac wiadomosci</string>
+    <string name="send_button_text">Wyślij</string>
+    <string name="message_read_status">Przeczytane</string>
+    <string name="message_new_status">Nowa</string>
 </resources>
