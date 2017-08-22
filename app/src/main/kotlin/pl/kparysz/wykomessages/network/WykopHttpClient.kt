@@ -59,7 +59,7 @@ class WykopHttpClient(val secretInfoApi: SecretInfoApi) {
     }
 
     private val logging: HttpLoggingInterceptor
-        get() = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS)
+        get() = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     companion object {
         const val APISIGN = "apisign"

@@ -1,5 +1,12 @@
 package wykomessages.di
 
+import pl.kparysz.wykomessages.di.App
+import pl.kparysz.wykomessages.di.Injector
+import pl.kparysz.wykomessages.di.modules.PresentersModule
+import pl.kparysz.wykomessages.di.modules.RepositoryModule
+import wykomessages.di.modules.AutomatedAppModule
+import wykomessages.di.modules.AutomatedNetworkModule
+
 class AutomatedApp : App() {
 
     companion object {
