@@ -8,16 +8,16 @@ import pl.kparysz.wykomessages.models.dataclass.ConversationDetail
 import pl.kparysz.wykomessages.rx.SubscriptionApi
 import unofficial.coderoid.wykop.newapp.utils.NavigatorApi
 
-class MessagesPresenter(val subscriptionManager: SubscriptionApi,
-                        val navigatorApi: NavigatorApi,
-                        val conversationListApi: ConversationListApi) : BasePresenter<MessagesView>() {
+class MainPresenter(val subscriptionManager: SubscriptionApi,
+                    val navigatorApi: NavigatorApi,
+                    val conversationListApi: ConversationListApi) : BasePresenter<MessagesView>() {
 
     override fun setView(view: MessagesView) {
         super.setView(view)
-        getAllMessages()
+        downloadAllConversations()
     }
 
-    private fun getAllMessages() {
+    fun downloadAllConversations() {
         subscriptionManager.subscribe(conversationListApi.getAllMessages(),
                 Consumer {
                     addClickActionToConversation(it)

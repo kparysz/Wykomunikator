@@ -36,9 +36,15 @@ class ChatActivity : AppCompatActivity(), ChatView {
         setContentView(R.layout.activity_chat)
         presenter.setView(this)
         val userName = intent.getStringExtra(USER_NAME_BUNDLE_KEY)
-        presenter.downloadChat(userName)
+        presenter.userName = userName
+        presenter.downloadChat()
         showProgress()
         send.setOnClickListener { presenter.sendMessage(userName, message_body.text.toString()) }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.destroyView()
     }
 
     override fun showChat(messages: List<PrivateMessageDetail>) {
@@ -59,8 +65,7 @@ class ChatActivity : AppCompatActivity(), ChatView {
 
     override fun messageSent() {
         message_body.setText("")
-        val userName = intent.getStringExtra(USER_NAME_BUNDLE_KEY)
-        presenter.downloadChat(userName)
+        presenter.downloadChat()
     }
 
     override fun showMessageSendError() {

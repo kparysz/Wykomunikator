@@ -8,4 +8,6 @@ interface NavigatorApi {
     fun openBrowser(context: Context, url: String?)
     fun openChatActivity(context: Context?, userName: String)
     fun openMessagesActivity(context: Context)
+    fun openSearchActivity(context: Context)
+    fun openSettingsActivity(context: Context)
 }

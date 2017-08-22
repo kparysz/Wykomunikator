@@ -7,4 +7,6 @@ interface WykopPreferencesApi {
     fun getUserKey(): String
     fun isUserLogged(): Boolean
     fun logoutUser()
+    fun setAutoRefresh(state: Boolean)
+    fun getAutoRefreshState(): Boolean
 }

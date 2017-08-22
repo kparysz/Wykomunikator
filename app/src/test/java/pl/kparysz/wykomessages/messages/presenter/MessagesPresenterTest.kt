@@ -16,7 +16,7 @@ import unofficial.coderoid.wykop.newapp.utils.NavigatorApi
 
 class MessagesPresenterTest {
 
-    lateinit var systemUnderTest: MessagesPresenter
+    lateinit var systemUnderTest: MainPresenter
     var subscriptionManagerTest = SubscriptionManagerTest()
     var mockOfNavigation = mock<NavigatorApi>()
     var mockOfView = mock<MessagesView>()
@@ -25,7 +25,7 @@ class MessagesPresenterTest {
 
     @Before
     fun setUp() {
-        systemUnderTest = MessagesPresenter(subscriptionManagerTest, mockOfNavigation, mockOfConversationListApi)
+        systemUnderTest = MainPresenter(subscriptionManagerTest, mockOfNavigation, mockOfConversationListApi)
     }
 
     @Test

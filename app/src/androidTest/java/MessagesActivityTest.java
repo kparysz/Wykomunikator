@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.kparysz.wykomessages.R;
-import pl.kparysz.wykomessages.messages.view.MessagesActivity;
+import pl.kparysz.wykomessages.messages.view.MainActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -20,8 +20,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 public class MessagesActivityTest extends AutomatedTestActivity {
 
     @Rule
-    public ActivityTestRule<MessagesActivity> activity =
-            new ActivityTestRule<>(MessagesActivity.class, true, false);
+    public ActivityTestRule<MainActivity> activity =
+            new ActivityTestRule<>(MainActivity.class, true, false);
 
     @Before
     public void setUp() throws Exception {

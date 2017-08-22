@@ -21,7 +21,11 @@
         </activity>
         <activity android:name=".login.view.LoginWebActivity" />
         <activity android:name=".chat.view.ChatActivity" />
-        <activity android:name=".messages.view.MessagesActivity" />
+        <activity android:name=".messages.view.MainActivity" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

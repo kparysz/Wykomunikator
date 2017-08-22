@@ -4,10 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/action_background"
-    tools:context="pl.kparysz.wykomessages.messages.view.MessagesActivity">
+    tools:context="pl.kparysz.wykomessages.messages.view.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/messages_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation"
+        android:layout_alignParentTop="true" />
+
+    <android.support.design.widget.BottomNavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_bottom_menu" />
+
 </RelativeLayout>

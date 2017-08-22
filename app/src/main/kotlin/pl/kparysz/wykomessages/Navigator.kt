@@ -8,7 +8,8 @@ import android.content.Intent
 import android.net.Uri
 import pl.kparysz.wykomessages.chat.view.ChatActivity
 import pl.kparysz.wykomessages.login.view.LoginWebActivity
-import pl.kparysz.wykomessages.messages.view.MessagesActivity
+import pl.kparysz.wykomessages.messages.view.MainActivity
+import pl.kparysz.wykomessages.settings.SettingsActivity
 
 class Navigator(val application: Application) : NavigatorApi {
 
@@ -18,8 +19,16 @@ class Navigator(val application: Application) : NavigatorApi {
     }
 
     override fun openMessagesActivity(context: Context) {
-        val intent = MessagesActivity.createIntent(context)
-        context?.startActivity(intent)
+        val intent = MainActivity.createIntent(context)
+        context.startActivity(intent)
+    }
+
+    override fun openSearchActivity(context: Context) {
+    }
+
+    override fun openSettingsActivity(context: Context) {
+        val intent = SettingsActivity.createIntent(context)
+        context.startActivity(intent)
     }
 
     override fun openChatActivity(context: Context?, userName: String) {

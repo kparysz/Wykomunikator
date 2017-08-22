@@ -16,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -43,6 +44,7 @@ android {
         }
     }
     testBuildType "automated"
+
 
 }
 
@@ -83,6 +85,8 @@ dependencies {
     // Dagger
     compile "com.google.dagger:dagger:$dagger_version"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:25.4.0'
+    compile 'com.android.support:support-vector-drawable:25.4.0'
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     testCompile 'org.assertj:assertj-core:1.7.1'
     testCompile 'com.nhaarman:mockito-kotlin:1.5.0'
